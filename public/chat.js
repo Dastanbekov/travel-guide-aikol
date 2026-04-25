@@ -222,7 +222,7 @@ function createWelcome() {
   div.className = 'welcome-screen';
   div.innerHTML = `
     <div class="welcome-icon">🏔️</div>
-    <h2>Привет! I'm KyrgyzAI</h2>
+    <h2>Привет! I'm AIKol</h2>
     <p>Your personal guide to beautiful Kyrgyzstan.<br/>Ask me anything — I speak your language!</p>
     <div class="welcome-suggestions">
       <button class="suggestion-pill" data-msg="What are the most beautiful places in Kyrgyzstan?">Most beautiful places?</button>

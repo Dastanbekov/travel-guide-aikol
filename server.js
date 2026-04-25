@@ -30,13 +30,13 @@ let sessions   = {};   // { sessionId: { mode, history, businessContext } }
 const upload = multer({ dest: uploadsDir });
 
 // ─── System prompts ───────────────────────────────────────────────────────────
-const INFO_PROMPT = `You are KyrgyzAI — a friendly, knowledgeable travel guide for Kyrgyzstan.
+const INFO_PROMPT = `You are AIKol — a friendly, knowledgeable travel guide for Kyrgyzstan.
 You help tourists discover the beauty of Kyrgyzstan: mountains, culture, food, Bishkek city, Issyk-Kul lake, Ala-Archa, and more.
 Be warm, enthusiastic, and conversational. Answer in the same language the tourist uses.
 When you mention specific hotels, tours, or prices — be general unless you have specific business data.
 Occasionally (naturally, not pushy) mention that you can help with actual bookings.`;
 
-const BOOKING_PROMPT = (ctx) => `You are KyrgyzAI — a personal travel manager for Kyrgyzstan.
+const BOOKING_PROMPT = (ctx) => `You are AIKol — a personal travel manager for Kyrgyzstan.
 The tourist is READY to book. Your job is to:
 1. Understand exactly what they need (dates, people count, budget, preferences)
 2. Present specific options from our partner businesses
@@ -298,6 +298,6 @@ function seedDemo() {
 seedDemo();
 
 app.listen(PORT, () => {
-  console.log(`🌍 KyrgyzAI Travel Platform running on http://localhost:${PORT}`);
+  console.log(`🌍 AIKol Travel Platform running on http://localhost:${PORT}`);
   console.log(`📧 Demo B2B login: demo@hotel.kg / demo123`);
 });
