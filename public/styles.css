@@ -1099,6 +1099,7 @@ body {
   gap: 0.8rem;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 2rem;
   max-width: 600px;
 }
 
@@ -2355,6 +2356,7 @@ body {
   gap: 0.7rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .hero-chat-pill {
@@ -2498,13 +2500,34 @@ body {
   box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
 }
 
-/* ── Media queries for SHE ── */
+/* ── Mobile Adaptation ── */
 @media (max-width: 768px) {
-  .she-titles {
-    flex-direction: column;
-    gap: 0.4rem;
+  /* Nav */
+  .nav-inner {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  .logo { font-size: 1.2rem; }
+  .logo-icon { font-size: 1.4rem; }
+  .nav-pill-list {
+    display: none;
+  }
+  .nav-actions .btn-ghost-nav {
+    display: none;
+  }
+  .nav-actions .btn-primary {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
 
+  /* Hero SHE */
+  .she-titles {
+    flex-direction: column;
+    gap: 0;
+  }
+  .she-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
   .she-media-labels {
     flex-direction: column;
     align-items: center;
@@ -2512,20 +2535,133 @@ body {
     text-align: center;
   }
 
+  /* Revealed Content */
   .hero-chat-bar {
     padding: 2.5rem 1rem 1.5rem;
   }
-
-  .hero-chat-send span {
-    display: none;
+  .hero-chat-pills {
+    gap: 0.5rem;
   }
-
+  .hero-chat-pill {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .hero-chat-input-row {
+    flex-direction: column;
+    padding: 0.6rem;
+    border-radius: 16px;
+    gap: 0.5rem;
+  }
+  .hero-chat-input {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+  }
   .hero-chat-send {
-    padding: 0.75rem 1rem;
+    width: 100%;
+    justify-content: center;
   }
-
+  
+  /* Stats */
   .stats-bar {
     gap: 1.5rem;
     flex-wrap: wrap;
+    padding: 1.5rem 1rem 2rem;
+  }
+  .stat-divider {
+    display: none;
+  }
+  .stat-item {
+    width: 40%;
+  }
+
+  /* Sections */
+  .features, .how-it-works {
+    padding: 60px 1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+  .hiw-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .steps {
+    gap: 1.5rem;
+  }
+  .step {
+    gap: 1rem;
+  }
+  .hiw-left .btn, .hiw-right .btn {
+    align-self: center;
+    width: 100%;
+    margin-top: 1.5rem !important;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 50px 1.5rem;
+    margin: 40px 1rem;
+    border-radius: 24px;
+  }
+  .cta-section h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 50px 1.5rem 30px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .footer-brand {
+    align-items: center;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* Auth / Dash */
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-card {
+    padding: 1.2rem;
+  }
+
+  /* Chat */
+  .chat-messages {
+    padding: 1rem;
+  }
+  .msg {
+    max-width: 100%;
+  }
+  .chat-input-area {
+    padding: 1rem;
+  }
+  .booking-banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  .booking-trigger-wrap {
+    justify-content: center;
   }
 }
