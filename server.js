@@ -167,7 +167,16 @@ app.post('/api/session/:sid/mode', (req, res) => {
 // Register business
 app.post('/api/business/register', (req, res) => {
   const { name, email, password, category } = req.body;
-  if (!name || !email) return res.status(400).json({ error: 'Name and email required' });
+  if (!name || !email || !password) {
+    return res.status(400).json({ error: 'Name, email and password are required' });
+  }
+  
+  // Check if email already exists
+  const existing = Object.values(businesses).find(b => b.email.toLowerCase() === email.toLowerCase());
+  if (existing) {
+    return res.status(400).json({ error: 'Business with this email already exists' });
+  }
+
   const id = uuidv4();
   businesses[id] = {
     id, name, email, password, category,
@@ -179,11 +188,18 @@ app.post('/api/business/register', (req, res) => {
   res.json({ ok: true, businessId: id, name });
 });
 
-// Login business (simplified)
+// Login business
 app.post('/api/business/login', (req, res) => {
   const { email, password } = req.body;
-  const biz = Object.values(businesses).find(b => b.email === email && b.password === password);
-  if (!biz) return res.status(401).json({ error: 'Invalid credentials' });
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password required' });
+  }
+  
+  const biz = Object.values(businesses).find(b => 
+    b.email.toLowerCase() === email.toLowerCase() && b.password === password
+  );
+  
+  if (!biz) return res.status(401).json({ error: 'Invalid email or password' });
   res.json({ ok: true, businessId: biz.id, name: biz.name });
 });
 

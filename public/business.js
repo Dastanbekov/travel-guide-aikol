@@ -61,7 +61,10 @@ loginBtn.addEventListener('click', async () => {
     const data = await res.json();
     if (!res.ok) { showErr(loginErr, data.error || 'Login failed'); return; }
     enterDashboard(data.businessId, data.name);
-  } catch { showErr(loginErr, 'Network error'); }
+  } catch (err) { 
+    console.error(err);
+    showErr(loginErr, 'Network error'); 
+  }
   finally { loginBtn.textContent = 'Sign In'; loginBtn.disabled = false; }
 });
 
@@ -83,7 +86,10 @@ registerBtn.addEventListener('click', async () => {
     const data = await res.json();
     if (!res.ok) { showErr(regErr, data.error || 'Registration failed'); return; }
     enterDashboard(data.businessId, data.name);
-  } catch { showErr(regErr, 'Network error'); }
+  } catch (err) {
+    console.error(err);
+    showErr(regErr, 'Network error');
+  }
   finally { registerBtn.textContent = 'Create Account'; registerBtn.disabled = false; }
 });
 
@@ -311,7 +317,7 @@ function appendTestMsg(role, text) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   div.innerHTML = `
-    <div class="msg-avatar">${role === 'ai' ? '<svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40,20 L25,40 C10,60 15,75 25,80 L20,95 L35,85 C45,88 60,70 55,40 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M60,10 L75,30 C90,50 90,75 60,95 C35,75 35,50 45,30 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg>' : '👤'}</div>
+    <div class="msg-avatar">${role === 'ai' ? '<img src="/logo.png" style="width: 20px; height: 20px; object-fit: contain; border-radius: 50%;">' : '👤'}</div>
     <div class="msg-bubble">${role === 'ai' ? renderMd(text) : esc(text)}</div>
   `;
   testMessages.appendChild(div);
@@ -319,10 +325,21 @@ function appendTestMsg(role, text) {
   return div;
 }
 
+function showErr(el, msg) {
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
 function appendTestTyping() {
   const div = document.createElement('div');
   div.className = 'msg ai';
-  div.innerHTML = `<div class="msg-avatar"><svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40,20 L25,40 C10,60 15,75 25,80 L20,95 L35,85 C45,88 60,70 55,40 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M60,10 L75,30 C90,50 90,75 60,95 C35,75 35,50 45,30 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  div.innerHTML = `
+    <div class="msg-avatar">
+      <img src="/logo.png" style="width: 20px; height: 20px; object-fit: contain; border-radius: 50%;">
+    </div>
+    <div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
   testMessages.appendChild(div);
   return div;
 }
