@@ -10,6 +10,12 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ─── Create uploads directory if it doesn't exist (for Vercel compatibility) ──
+const uploadsDir = process.env.VERCEL ? '/tmp/uploads' : 'uploads';
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,7 +27,7 @@ let businesses = {};   // { id: { name, description, services, prices, locations
 let sessions   = {};   // { sessionId: { mode, history, businessContext } }
 
 // ─── Multer for file uploads ──────────────────────────────────────────────────
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: uploadsDir });
 
 // ─── System prompts ───────────────────────────────────────────────────────────
 const INFO_PROMPT = `You are KyrgyzAI — a friendly, knowledgeable travel guide for Kyrgyzstan.
