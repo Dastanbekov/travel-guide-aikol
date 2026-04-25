@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KyrgyzAI — Your AI Travel Companion for Kyrgyzstan</title>
+  <meta name="description" content="Discover Kyrgyzstan with your personal AI travel guide. Book hotels, tours, and experiences through intelligent conversation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="landing-page">
+
+  <!-- ── Nav ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🏔️</span>
+        <span class="logo-text">KyrgyzAI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="business.html" class="nav-biz-link">For Business</a>
+      </div>
+      <div class="nav-actions">
+        <a href="business.html" class="btn btn-ghost">Business Login</a>
+        <a href="chat.html" class="btn btn-primary">Start Exploring</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered Travel Platform
+      </div>
+      <h1 class="hero-title">
+        Discover Kyrgyzstan<br/>
+        <span class="gradient-text">with Your AI Guide</span>
+      </h1>
+      <p class="hero-sub">
+        Ask anything. Plan everything. Book instantly.<br/>
+        Your intelligent companion for the Land of Mountains.
+      </p>
+      <div class="hero-actions">
+        <a href="chat.html" class="btn btn-primary btn-lg">
+          <span>Start Chatting</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Partner Businesses</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">AI Availability</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label">Languages</span></div>
+      </div>
+    </div>
+
+    <!-- Chat preview mockup -->
+    <div class="hero-mockup">
+      <div class="mockup-window">
+        <div class="mockup-header">
+          <div class="mockup-dots"><span></span><span></span><span></span></div>
+          <div class="mockup-title">KyrgyzAI Chat</div>
+        </div>
+        <div class="mockup-messages" id="mockupMessages"></div>
+        <div class="mockup-input-bar">
+          <div class="mockup-input">Ask about Kyrgyzstan...</div>
+          <div class="mockup-send">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="features" id="features">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Everything You Need<br/>in One Conversation</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>AI Travel Guide</h3>
+        <p>Ask any question about Kyrgyzstan — hotels, culture, food, transportation, safety. Get instant, accurate answers in your language.</p>
+      </div>
+      <div class="feature-card feature-card--highlight">
+        <div class="feature-icon">🎯</div>
+        <h3>Smart Booking Agent</h3>
+        <p>When ready to book, one click transforms your chat into a personal manager who finds options and handles reservations directly with businesses.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Direct Business Link</h3>
+        <p>We connect you directly with verified local hotels, tour operators, and guides — no middlemen, no hidden fees.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Multilingual</h3>
+        <p>Speak in English, Russian, Chinese, German, French or any major language. Our AI adapts to you automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Instant Confirmation</h3>
+        <p>Get booking confirmations in minutes, not hours. Our AI works round the clock so you can plan on your schedule.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏔️</div>
+        <h3>Local Expertise</h3>
+        <p>Trained on deep knowledge of Kyrgyzstan — from Bishkek's best restaurants to hidden gems in the Tian Shan mountains.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="hiw-inner">
+      <div class="hiw-left">
+        <div class="section-label">For Tourists</div>
+        <h2 class="section-title">From Question<br/>to Booking in Minutes</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Ask Freely</h4>
+              <p>Chat like with a friend. Ask about the best hotels in Bishkek, what to see at Issyk-Kul, or how to get to Ala-Archa.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>Ready to Book?</h4>
+              <p>When you're ready, press the booking button. The AI shifts into manager mode and starts finding real, available options.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>Confirm & Go</h4>
+              <p>Review the details, confirm, and receive your booking ID. The business is notified immediately.</p>
+            </div>
+          </div>
+        </div>
+        <a href="chat.html" class="btn btn-primary btn-lg" style="margin-top:2rem">
+          Try the AI Chat
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+      <div class="hiw-right">
+        <div class="section-label">For Businesses</div>
+        <h2 class="section-title">Your 24/7 AI<br/>Sales Representative</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Upload Your Data</h4>
+              <p>Add your services, prices, locations, and unique selling points to our platform in minutes.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>AI Handles Inquiries</h4>
+              <p>Our trained AI responds to tourist questions about your business accurately, 24/7, in any language.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>Manage via CRM</h4>
+              <p>See all leads, bookings, and analytics in your smart dashboard. Confirm or adjust bookings with one click.</p>
+            </div>
+          </div>
+        </div>
+        <a href="business.html" class="btn btn-outline btn-lg" style="margin-top:2rem">
+          Register Your Business
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <div class="cta-orb"></div>
+    <h2>Ready to Explore Kyrgyzstan?</h2>
+    <p>Join thousands of travelers who discovered their perfect Kyrgyzstan experience through KyrgyzAI.</p>
+    <a href="chat.html" class="btn btn-primary btn-xl">
+      Start Your Journey
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🏔️</span>
+        <span class="logo-text">KyrgyzAI</span>
+        <p>AI-powered travel platform for Kyrgyzstan</p>
+      </div>
+      <div class="footer-links">
+        <a href="chat.html">Tourist Chat</a>
+        <a href="business.html">For Business</a>
+        <a href="#features">Features</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KyrgyzAI. Built with ❤️ for Kyrgyzstan tourism.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('nav--scrolled', window.scrollY > 50);
+    });
+
+    // Mockup chat animation
+    const msgs = [
+      { role: 'user', text: 'What\'s the best hotel in Bishkek?' },
+      { role: 'ai', text: 'Great choice! Bishkek has amazing hotels. The Grand Palace Hotel on Chui Ave is 5-star with mountain views. Budget-friendly? Check Metro Hotel...' },
+      { role: 'user', text: 'What about tours to Issyk-Kul?' },
+      { role: 'ai', text: '🏖️ Issyk-Kul is stunning! I can find 3-day tours from $150/person including transport and accommodation. Ready to book?' },
+    ];
+    const container = document.getElementById('mockupMessages');
+    let i = 0;
+    function showNextMsg() {
+      if (i >= msgs.length) { i = 0; container.innerHTML = ''; }
+      const m = msgs[i++];
+      const el = document.createElement('div');
+      el.className = `mockup-msg mockup-msg--${m.role}`;
+      el.textContent = m.text;
+      container.appendChild(el);
+      container.scrollTop = container.scrollHeight;
+      setTimeout(showNextMsg, 2200);
+    }
+    setTimeout(showNextMsg, 600);
+  </script>
+</body>
+</html>
