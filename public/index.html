@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIKol — Your AI Travel Companion for Kyrgyzstan</title>
-  <meta name="description" content="Discover Kyrgyzstan with your personal AI travel guide. Book hotels, tours, and experiences through intelligent conversation." />
+  <meta name="description"
+    content="Discover Kyrgyzstan with your personal AI travel guide. Book hotels, tours, and experiences through intelligent conversation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+
 <body class="landing-page">
 
-  <!-- ── Nav ── -->
+  <!-- ── Sliding-cursor NavBar ── -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
+      <!-- Logo -->
       <a href="/" class="logo">
         <span class="logo-icon">🏔️</span>
         <span class="logo-text">AIKol</span>
       </a>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="business.html">For Business</a>
-      </div>
+
+      <!-- Sliding cursor nav -->
+      <ul class="nav-pill-list" id="navPillList" onmouseleave="navCursorLeave()">
+        <li class="nav-pill-item" onmouseenter="navCursorEnter(this)" onclick="location.href='#features'">Features</li>
+        <li class="nav-pill-item" onmouseenter="navCursorEnter(this)" onclick="location.href='#how-it-works'">How it
+          works</li>
+        <li class="nav-pill-item" onmouseenter="navCursorEnter(this)" onclick="location.href='business.html'">For
+          Business</li>
+        <!-- Sliding highlight -->
+        <li class="nav-pill-cursor" id="navPillCursor"></li>
+      </ul>
+
+      <!-- Actions -->
       <div class="nav-actions">
-        <a href="business.html" class="btn btn-ghost">Login</a>
-        <a href="chat.html" class="btn btn-primary">
+        <a href="business.html" class="btn btn-ghost-nav">Login</a>
+        <a href="chat.html" class="btn btn-primary" id="nav-start-btn">
           <span>Start Exploring</span>
           <i class="ph ph-arrow-right"></i>
         </a>
@@ -34,237 +47,270 @@
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-orb orb1"></div>
-      <div class="hero-orb orb2"></div>
-      <div class="hero-orb orb3"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Next-Gen Travel Platform
+  <!-- ═══════════════════════════════════════
+       SCROLL-EXPAND HERO
+       ═══════════════════════════════════════ -->
+  <div id="she-wrapper" class="she-wrapper">
+
+    <section class="she-section">
+      <!-- Background -->
+      <div class="she-bg" id="she-bg">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1920&auto=format&fit=crop"
+          alt="Kyrgyzstan mountain landscape" class="she-bg-img" />
+        <div class="she-bg-overlay"></div>
       </div>
-      <h1 class="hero-title">
-        Discover Kyrgyzstan<br/>
-        <span class="gradient-text">with Your AI Guide</span>
-      </h1>
-      <p class="hero-sub">
-        Plan your perfect mountain escape through natural conversation. 
-        Instant bookings, local secrets, and 24/7 assistance.
-      </p>
-      <div class="hero-actions">
-        <a href="chat.html" class="btn btn-primary btn-lg">
-          <span>Start Chatting Now</span>
-          <i class="ph-bold ph-chats-circle"></i>
-        </a>
-        <a href="#how-it-works" class="btn btn-outline btn-lg">
-          <span>See How It Works</span>
-          <i class="ph ph-play-circle"></i>
-        </a>
+
+      <!-- Content -->
+      <div class="she-content">
+        <!-- Split title -->
+        <div class="she-titles" aria-label="Discover Kyrgyzstan">
+          <h1 class="she-title she-title--left" id="she-title-left">Discover</h1>
+          <h1 class="she-title she-title--right" id="she-title-right">Kyrgyzstan</h1>
+        </div>
+
+        <!-- Expanding media -->
+        <div class="she-media-box" id="she-media-box">
+          <img src="hero.gif" alt="Stunning Kyrgyzstan peaks" class="she-media-img" />
+          <div class="she-media-overlay" id="she-media-overlay"></div>
+          <div class="she-media-labels">
+            <p class="she-label-date" id="she-date">Land of Mountains</p>
+            <p class="she-label-hint" id="she-hint">↕ Scroll to Explore</p>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
+    </section>
+
+    <!-- ── Revealed content ── -->
+    <div class="she-reveal" id="she-reveal">
+
+      <!-- Mini chat bar (redirects to chat.html with pre-filled message) -->
+      <div class="hero-chat-bar">
+        <div class="hero-chat-bar-inner">
+          <p class="hero-chat-bar-label">Ask AIKol anything about Kyrgyzstan</p>
+          <form class="hero-chat-form" id="heroChatForm" onsubmit="heroSubmitChat(event)">
+            <div class="hero-chat-pills">
+              <button type="button" class="hero-chat-pill" onclick="heroFillChat(this)">🏔️ Best hikes?</button>
+              <button type="button" class="hero-chat-pill" onclick="heroFillChat(this)">🏨 Hotels in Bishkek?</button>
+              <button type="button" class="hero-chat-pill" onclick="heroFillChat(this)">🗓️ 7-day itinerary</button>
+              <button type="button" class="hero-chat-pill" onclick="heroFillChat(this)">💰 Budget trip?</button>
+            </div>
+            <div class="hero-chat-input-row">
+              <input type="text" id="heroChatInput" class="hero-chat-input"
+                placeholder="Where should I go in Kyrgyzstan...?" maxlength="500" autocomplete="off" />
+              <button type="submit" class="hero-chat-send" id="heroChatSend">
+                <i class="ph-bold ph-paper-plane-right"></i>
+                <span>Chat with AI</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
         <div class="stat-item">
           <span class="stat-num">500+</span>
-          <span class="stat-label">Partners</span>
+          <span class="stat-label">Travel Partners</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">24/7</span>
-          <span class="stat-label">AI Support</span>
+          <span class="stat-label">AI Assistance</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">12+</span>
           <span class="stat-label">Languages</span>
         </div>
-      </div>
-    </div>
-
-    <!-- Chat preview mockup -->
-    <div class="hero-mockup">
-      <div class="mockup-window">
-        <div class="mockup-header">
-          <div class="mockup-dots"><span></span><span></span><span></span></div>
-          <div class="mockup-title">AIKol Assistant — Active Now</div>
-        </div>
-        <div class="mockup-messages" id="mockupMessages"></div>
-        <div class="mockup-input-bar">
-          <div class="mockup-input">Ask about Tian Shan expeditions...</div>
-          <div class="mockup-send">
-            <i class="ph-fill ph-paper-plane-right"></i>
-          </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">4.9★</span>
+          <span class="stat-label">User Rating</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── Features ── -->
-  <section class="features" id="features">
-    <div class="section-label">Core Capabilities</div>
-    <h2 class="section-title">Everything You Need<br/>in One Conversation</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <i class="ph ph-chat-centered-dots feature-icon" style="color: var(--accent)"></i>
-        <h3>AI Travel Guide</h3>
-        <p>Deep knowledge of Kyrgyz culture, geography, and safety. Get instant answers in any language, day or night.</p>
-      </div>
-      <div class="feature-card feature-card--highlight">
-        <i class="ph ph-sparkle feature-icon" style="color: var(--accent2)"></i>
-        <h3>Smart Booking Agent</h3>
-        <p>Seamlessly transition from research to reservation. Our AI handles the details directly with local vendors.</p>
-      </div>
-      <div class="feature-card">
-        <i class="ph ph-users-three feature-icon" style="color: var(--accent3)"></i>
-        <h3>Direct Business Link</h3>
-        <p>No middlemen. We connect you straight to verified hotels and tour operators for the best local rates.</p>
-      </div>
-      <div class="feature-card">
-        <i class="ph ph-translate feature-icon" style="color: var(--green)"></i>
-        <h3>Multilingual Support</h3>
-        <p>Fluent in English, Russian, Chinese, German, and more. Our AI adapts to your preferred way of speaking.</p>
-      </div>
-      <div class="feature-card">
-        <i class="ph ph-lightning feature-icon" style="color: var(--yellow)"></i>
-        <h3>Instant Confirmation</h3>
-        <p>Forget waiting for emails. Receive your booking ID and details immediately within the chat interface.</p>
-      </div>
-      <div class="feature-card">
-        <i class="ph ph-mountains feature-icon" style="color: var(--accent)"></i>
-        <h3>Local Expertise</h3>
-        <p>From the bustling markets of Osh to the quiet shores of Son-Kul, get recommendations only locals know.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── How It Works ── -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="hiw-inner">
-      <div class="hiw-left">
-        <div class="section-label">For Travelers</div>
-        <h2 class="section-title">From Curiosity<br/>to Confirmation</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">01</div>
-            <div class="step-body">
-              <h4>Ask Anything</h4>
-              <p>Chat naturally. "Where can I find the best yurt stay?" or "How do I get to Karakol from Bishkek?"</p>
-            </div>
+      <!-- ── Features ── -->
+      <section class="features" id="features">
+        <div class="section-label">Core Capabilities</div>
+        <h2 class="section-title">Everything You Need<br />in One Conversation</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="ph ph-chat-centered-dots feature-icon" style="color: var(--accent)"></i>
+            <h3>AI Travel Guide</h3>
+            <p>Deep knowledge of Kyrgyz culture, geography, and safety. Get instant answers in any language, day or
+              night.</p>
           </div>
-          <div class="step">
-            <div class="step-num">02</div>
-            <div class="step-body">
-              <h4>Select & Personalize</h4>
-              <p>The AI provides tailored options. Choose what fits your budget and style perfectly.</p>
-            </div>
+          <div class="feature-card feature-card--highlight">
+            <i class="ph ph-sparkle feature-icon" style="color: var(--accent2)"></i>
+            <h3>Smart Booking Agent</h3>
+            <p>Seamlessly transition from research to reservation. Our AI handles the details directly with local
+              vendors.</p>
           </div>
-          <div class="step">
-            <div class="step-num">03</div>
-            <div class="step-body">
-              <h4>One-Click Booking</h4>
-              <p>Confirm the details and you're set. Your digital booking card is issued instantly.</p>
-            </div>
+          <div class="feature-card">
+            <i class="ph ph-users-three feature-icon" style="color: var(--accent3)"></i>
+            <h3>Direct Business Link</h3>
+            <p>No middlemen. We connect you straight to verified hotels and tour operators for the best local rates.</p>
+          </div>
+          <div class="feature-card">
+            <i class="ph ph-translate feature-icon" style="color: var(--green)"></i>
+            <h3>Multilingual Support</h3>
+            <p>Fluent in English, Russian, Chinese, German, and more. Our AI adapts to your preferred way of speaking.
+            </p>
+          </div>
+          <div class="feature-card">
+            <i class="ph ph-lightning feature-icon" style="color: var(--yellow)"></i>
+            <h3>Instant Confirmation</h3>
+            <p>Forget waiting for emails. Receive your booking ID and details immediately within the chat interface.</p>
+          </div>
+          <div class="feature-card">
+            <i class="ph ph-mountains feature-icon" style="color: var(--accent)"></i>
+            <h3>Local Expertise</h3>
+            <p>From the bustling markets of Osh to the quiet shores of Son-Kul, get recommendations only locals know.
+            </p>
           </div>
         </div>
-        <a href="chat.html" class="btn btn-primary btn-lg" style="margin-top:3rem; align-self: flex-start;">
-          <span>Try AI Assistant</span>
-          <i class="ph ph-arrow-right"></i>
+      </section>
+
+      <!-- ── How It Works ── -->
+      <section class="how-it-works" id="how-it-works">
+        <div class="hiw-inner">
+          <div class="hiw-left">
+            <div class="section-label">For Travelers</div>
+            <h2 class="section-title">From Curiosity<br />to Confirmation</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                  <h4>Ask Anything</h4>
+                  <p>Chat naturally. "Where can I find the best yurt stay?" or "How do I get to Karakol from Bishkek?"
+                  </p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                  <h4>Select &amp; Personalize</h4>
+                  <p>The AI provides tailored options. Choose what fits your budget and style perfectly.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                  <h4>One-Click Booking</h4>
+                  <p>Confirm the details and you're set. Your digital booking card is issued instantly.</p>
+                </div>
+              </div>
+            </div>
+            <a href="chat.html" class="btn btn-primary btn-lg" style="margin-top:3rem; align-self: flex-start;"
+              id="hiw-try-btn">
+              <span>Try AI Assistant</span>
+              <i class="ph ph-arrow-right"></i>
+            </a>
+          </div>
+          <div class="hiw-right">
+            <div class="section-label">For Business</div>
+            <h2 class="section-title">Your 24/7 AI<br />Sales Force</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                  <h4>Integrate Your Data</h4>
+                  <p>Upload your listings, pricing, and house rules. Our AI learns your business in seconds.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                  <h4>Automated Sales</h4>
+                  <p>AI answers guest questions and pushes for bookings while you focus on operations.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                  <h4>Full CRM Control</h4>
+                  <p>Manage all AI-generated leads and confirmed bookings through your professional dashboard.</p>
+                </div>
+              </div>
+            </div>
+            <a href="business.html" class="btn btn-outline btn-lg" style="margin-top:3rem; align-self: flex-start;"
+              id="hiw-partner-btn">
+              <span>Partner With Us</span>
+              <i class="ph ph-briefcase"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA ── -->
+      <section class="cta-section">
+        <div class="cta-orb"></div>
+        <h2 class="gradient-text">Ready to Explore Kyrgyzstan?</h2>
+        <p>Join thousands of travelers who discovered their perfect Kyrgyzstan experience through AIKol.</p>
+        <a href="chat.html" class="btn btn-primary btn-xl" id="cta-start-btn">
+          <span>Start Your Journey</span>
+          <i class="ph-bold ph-rocket-launch"></i>
         </a>
-      </div>
-      <div class="hiw-right">
-        <div class="section-label">For Business</div>
-        <h2 class="section-title">Your 24/7 AI<br/>Sales Force</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">01</div>
-            <div class="step-body">
-              <h4>Integrate Your Data</h4>
-              <p>Upload your listings, pricing, and house rules. Our AI learns your business in seconds.</p>
-            </div>
+      </section>
+
+      <!-- ── Footer ── -->
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a href="/" class="logo" style="margin-bottom: 1rem">
+              <span class="logo-icon">🏔️</span>
+              <span class="logo-text">AIKol</span>
+            </a>
+            <p>The future of tourism in the Land of Mountains.</p>
           </div>
-          <div class="step">
-            <div class="step-num">02</div>
-            <div class="step-body">
-              <h4>Automated Sales</h4>
-              <p>AI answers guest questions and pushes for bookings while you focus on operations.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">03</div>
-            <div class="step-body">
-              <h4>Full CRM Control</h4>
-              <p>Manage all AI-generated leads and confirmed bookings through your professional dashboard.</p>
-            </div>
+          <div class="footer-links">
+            <a href="chat.html">AI Guide</a>
+            <a href="business.html">Business Portal</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">Process</a>
           </div>
         </div>
-        <a href="business.html" class="btn btn-outline btn-lg" style="margin-top:3rem; align-self: flex-start;">
-          <span>Partner With Us</span>
-          <i class="ph ph-briefcase"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+        <div class="footer-bottom">
+          <p>© 2026 AIKol. Pioneering AI Tourism in Kyrgyzstan.</p>
+        </div>
+      </footer>
 
-  <!-- ── CTA ── -->
-  <section class="cta-section">
-    <div class="cta-orb"></div>
-    <h2 class="gradient-text">Ready to Explore Kyrgyzstan?</h2>
-    <p>Join thousands of travelers who discovered their perfect Kyrgyzstan experience through AIKol.</p>
-    <a href="chat.html" class="btn btn-primary btn-xl">
-      <span>Start Your Journey</span>
-      <i class="ph-bold ph-rocket-launch"></i>
-    </a>
-  </section>
-
-  <!-- ── Footer ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="logo" style="margin-bottom: 1rem">
-          <span class="logo-icon">🏔️</span>
-          <span class="logo-text">AIKol</span>
-        </a>
-        <p>The future of tourism in the Land of Mountains.</p>
-      </div>
-      <div class="footer-links">
-        <a href="chat.html">AI Guide</a>
-        <a href="business.html">Business Portal</a>
-        <a href="#features">Platform Features</a>
-        <a href="#how-it-works">Process</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 AIKol. Pioneering AI Tourism in Kyrgyzstan.</p>
-    </div>
-  </footer>
+    </div><!-- /she-reveal -->
+  </div><!-- /she-wrapper -->
 
   <script>
-    // Nav scroll effect
+    // ── Nav sliding cursor ──────────────────────────────
+    const cursor = document.getElementById('navPillCursor');
+    function navCursorEnter(el) {
+      cursor.style.left = el.offsetLeft + 'px';
+      cursor.style.width = el.offsetWidth + 'px';
+      cursor.style.opacity = '1';
+    }
+    function navCursorLeave() {
+      cursor.style.opacity = '0';
+    }
+
+    // ── Nav scroll glass effect ─────────────────────────
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('nav--scrolled', window.scrollY > 50);
     });
 
-    // Mockup chat animation
-    const msgs = [
-      { role: 'user', text: 'Where is the best place for a yurt stay near Issyk-Kul?' },
-      { role: 'ai', text: 'South shore is best! Check out Bel-Tam Yurt Camp. It\'s right on the water and very authentic. Want me to check availability?' },
-      { role: 'user', text: 'Yes please, for 2 nights next week.' },
-      { role: 'ai', text: 'Searching... Found it! $45/night including breakfast. I can reserve this for you now if you\'re ready! 🏔️' },
-    ];
-    const container = document.getElementById('mockupMessages');
-    let i = 0;
-    function showNextMsg() {
-      if (i >= msgs.length) { i = 0; container.innerHTML = ''; }
-      const m = msgs[i++];
-      const el = document.createElement('div');
-      el.className = `mockup-msg mockup-msg--${m.role}`;
-      el.textContent = m.text;
-      container.appendChild(el);
-      container.scrollTop = container.scrollHeight;
-      setTimeout(showNextMsg, 2500);
+    // ── Hero chat bar ───────────────────────────────────
+    function heroFillChat(btn) {
+      const raw = btn.textContent.replace(/^[\p{Emoji}\s]+/u, '').trim();
+      document.getElementById('heroChatInput').value = raw;
+      document.getElementById('heroChatInput').focus();
     }
-    setTimeout(showNextMsg, 1000);
+    function heroSubmitChat(e) {
+      e.preventDefault();
+      const msg = document.getElementById('heroChatInput').value.trim();
+      if (!msg) return;
+      sessionStorage.setItem('aikol_prefill', msg);
+      window.location.href = 'chat.html';
+    }
   </script>
+
+  <script src="hero-expand.js"></script>
 </body>
+
 </html>

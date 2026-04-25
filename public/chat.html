@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIKol — Chat</title>
+  <title>AIKol — Chat with Your AI Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -29,6 +29,7 @@
       <button class="topic-btn" data-msg="What traditional Kyrgyz food should I try?"><i class="ph ph-fork-knife"></i> Local Cuisine</button>
       <button class="topic-btn" data-msg="Tell me about trekking options in Kyrgyzstan"><i class="ph ph-boot"></i> Trekking Routes</button>
       <button class="topic-btn" data-msg="Is Kyrgyzstan safe for tourists?"><i class="ph ph-shield-check"></i> Safety Tips</button>
+      <button class="topic-btn" data-msg="How do I book a yurt stay in Kyrgyzstan?"><i class="ph ph-tent"></i> Yurt Booking</button>
     </div>
     <div class="sidebar-footer">
       <a href="business.html" class="sidebar-biz-link">
@@ -49,7 +50,7 @@
           <span id="modeLabel">Travel Guide Mode</span>
         </div>
       </div>
-      <a href="/" class="topbar-home">
+      <a href="/" class="topbar-home" title="Back to home">
         <i class="ph ph-house"></i>
       </a>
     </div>
@@ -80,10 +81,19 @@
     </div>
 
     <div class="chat-input-area">
+      <!-- Booking mode trigger (replaces file/clone/project buttons) -->
       <div class="booking-trigger-wrap" id="bookingTriggerWrap">
         <button class="booking-trigger-btn" id="bookingTriggerBtn" title="Activate Booking Mode">
-          <i class="ph-fill ph-sparkle"></i>
-          Ready to Book
+          <i class="ph-fill ph-calendar-check"></i>
+          Book a Trip
+        </button>
+        <button class="booking-trigger-btn booking-trigger-btn--hotels" onclick="document.getElementById('chatInput').value='I want to book a hotel in Bishkek'; document.getElementById('sendBtn').click()">
+          <i class="ph ph-buildings"></i>
+          Find Hotels
+        </button>
+        <button class="booking-trigger-btn booking-trigger-btn--tours" onclick="document.getElementById('chatInput').value='What tours are available in Kyrgyzstan?'; document.getElementById('sendBtn').click()">
+          <i class="ph ph-map-trifold"></i>
+          Browse Tours
         </button>
       </div>
       <div class="input-box">
@@ -92,7 +102,7 @@
           <i class="ph-fill ph-paper-plane-right"></i>
         </button>
       </div>
-      <div class="input-footer"><span class="input-hint">AIKol can make mistakes. Verify important info.</span></div>
+      <div class="input-footer"><span class="input-hint">AIKol can make mistakes. Verify important info before booking.</span></div>
     </div>
   </main>
 
@@ -108,6 +118,25 @@
     </div>
   </div>
 
+  <script>
+    // Pick up prefill message from landing page hero chat bar
+    const prefill = sessionStorage.getItem('aikol_prefill');
+    if (prefill) {
+      sessionStorage.removeItem('aikol_prefill');
+      window.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('chatInput');
+        if (input) {
+          input.value = prefill;
+          input.dispatchEvent(new Event('input'));
+          // Auto-send after a short delay so chat.js is ready
+          setTimeout(() => {
+            const sendBtn = document.getElementById('sendBtn');
+            if (sendBtn && !sendBtn.disabled) sendBtn.click();
+          }, 800);
+        }
+      });
+    }
+  </script>
   <script src="chat.js"></script>
 </body>
 </html>
