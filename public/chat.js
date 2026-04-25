@@ -188,7 +188,7 @@ function appendMsg(role, text) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   div.innerHTML = `
-    <div class="msg-avatar">${role === 'ai' ? '🏔️' : '👤'}</div>
+    <div class="msg-avatar">${role === 'ai' ? '<svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40,20 L25,40 C10,60 15,75 25,80 L20,95 L35,85 C45,88 60,70 55,40 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M60,10 L75,30 C90,50 90,75 60,95 C35,75 35,50 45,30 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg>' : '👤'}</div>
     <div class="msg-bubble">${role === 'ai' ? renderMarkdown(text) : escHtml(text)}</div>
   `;
   chatMessages.appendChild(div);
@@ -200,7 +200,7 @@ function appendTyping() {
   const div = document.createElement('div');
   div.className = 'msg ai';
   div.innerHTML = `
-    <div class="msg-avatar">🏔️</div>
+    <div class="msg-avatar"><svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40,20 L25,40 C10,60 15,75 25,80 L20,95 L35,85 C45,88 60,70 55,40 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M60,10 L75,30 C90,50 90,75 60,95 C35,75 35,50 45,30 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
     <div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>
   `;
   chatMessages.appendChild(div);
@@ -221,7 +221,7 @@ function createWelcome() {
   div.id = 'welcomeScreen';
   div.className = 'welcome-screen';
   div.innerHTML = `
-    <div class="welcome-icon">🏔️</div>
+    <div class="welcome-icon"><svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40,20 L25,40 C10,60 15,75 25,80 L20,95 L35,85 C45,88 60,70 55,40 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M60,10 L75,30 C90,50 90,75 60,95 C35,75 35,50 45,30 Z" fill="var(--bg, #ffffff)" stroke="#0047FF" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
     <h2>Привет! I'm AIKol</h2>
     <p>Your personal guide to beautiful Kyrgyzstan.<br/>Ask me anything — I speak your language!</p>
     <div class="welcome-suggestions">
